@@ -17,9 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+<<<<<<< HEAD
 from naval_battle.views import user_create
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login/', user_create, name='user_create')
+=======
+urlpatterns = [
+    path('admin/', admin.site.urls),
+>>>>>>> 5904f121c72db81337e486ed4764d26600116240
 ]
