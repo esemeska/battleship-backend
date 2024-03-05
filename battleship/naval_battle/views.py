@@ -1,5 +1,4 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -18,7 +17,3 @@ def user_create(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-=======
-
-# Create your views here.
->>>>>>> 5904f121c72db81337e486ed4764d26600116240

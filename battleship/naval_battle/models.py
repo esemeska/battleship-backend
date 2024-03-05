@@ -7,11 +7,9 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
-<<<<<<< HEAD
     username = models.CharField(max_length=20, default="user_asd")
     password = models.CharField(max_length=30, default='qwerty123')
-=======
->>>>>>> 5904f121c72db81337e486ed4764d26600116240
+
 
 class UserStats(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='stats')
