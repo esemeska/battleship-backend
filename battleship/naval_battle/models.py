@@ -10,6 +10,16 @@ class UserProfile(models.Model):
     username = models.CharField(max_length=20, default="user_asd")
     password = models.CharField(max_length=30, default='qwerty123')
 
+    class UserType(Enum):
+        ADMIN = "ADMIN"
+        DEFAULT = "DEFAULT"
+
+        @classmethod
+        def choices(cls):
+            return [(key.value, key.name) for key in cls]
+
+    type = models.CharField(max_length=20, choices=UserType.choices(), default=UserType.DEFAULT.value)
+
 
 class UserStats(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='stats')
@@ -21,6 +31,7 @@ class Map(models.Model):
     shots = models.JSONField(default=list)
 
 class Match(models.Model):
+    moves_history = models.JSONField(default=list)
     class State(Enum):
         PENDING = "pending"
         IN_PROGRESS = "in_progress"
@@ -31,7 +42,7 @@ class Match(models.Model):
             return [(key.value, key.name) for key in cls]
 
     status = models.CharField(max_length=20, choices=State.choices(), default=State.PENDING.value)
-    moves_history = models.JSONField(default=list)
+    
 
 
 class MatchPlayer(models.Model):
